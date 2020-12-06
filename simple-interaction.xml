@@ -1,0 +1,208 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="IntentCandidate" id="a.!s2-h7Dob0vJ*z@!wM">user_feeling</variable>
+    <variable type="GenericValue" id="4hi@8!NHwF5e8lD;UW[%">user_name</variable>
+  </variables>
+  <block type="state" id="_HyXZb5pZe{Q33R,x7c5" deletable="false" editable="false" x="-187" y="6">
+    <field name="stateName">start</field>
+    <statement name="actions">
+      <block type="say_text" id="hQHc3%f.6sR(DRY76*y*">
+        <value name="text">
+          <shadow type="text" id="oq4Qsx2^!;I_rU40e_N?">
+            <field name="value">hello</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="listen" id="KEpK%n8vVMcHVRPn^zfl"></block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="onreentry" id="taQMY#lQDRZ_YYMnFHn/">
+        <statement name="actions">
+          <block type="listen" id="m6AWt85zjx/QX]#%r/v/"></block>
+        </statement>
+        <next>
+          <block type="onresponse_nothing" id="(jtd4HyjWax!gfnLYzs1">
+            <statement name="actions">
+              <block type="reentry" id="WA1fmu-$aL[H{F)Ci@=t"></block>
+            </statement>
+            <next>
+              <block type="onresponse_intent" id="B]M^-)2fY:Z.Rg[z;;7W">
+                <value name="intent">
+                  <block type="intent_greeting" id="e/k5y1U-dk.uWbn{e~e2"></block>
+                </value>
+                <statement name="actions">
+                  <block type="goto" id="rXbQ3wzG_Mmcy?~n$0RJ">
+                    <field name="stateName">How are you?</field>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="state" id="8RT-DQHAWL-(B?8lq=Dx" x="108" y="8">
+    <field name="stateName">What is your name?</field>
+    <statement name="actions">
+      <block type="ask_text" id="(hH)jHhz6tqThxa2fgz5">
+        <value name="text">
+          <shadow type="text" id="X=o#XZ$sJwYneoxySTAx">
+            <field name="value">What is your name?</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="9D,9r^cgc6LlQ%??K7!J">
+        <value name="intent">
+          <block type="intent_entity" id="37aoI6G8XVR3|_Qy$bWl">
+            <statement name="entityBlocks">
+              <block type="entity_name" id="$i`Txgz:5%dhQEu_H-j1">
+                <field name="variable" id="4hi@8!NHwF5e8lD;UW[%" variabletype="GenericValue">user_name</field>
+              </block>
+            </statement>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="say_utterance" id="HbR}UsTSw6n9[:=Nqi]k">
+            <statement name="utterance">
+              <block type="utt_text" id="Z~2jBdlJ.fWdC}d~(H5U">
+                <field name="text">Nice to meet you </field>
+                <next>
+                  <block type="utt_value" id="B,d36FB|JImif`-(!^9*">
+                    <value name="value">
+                      <block type="variable_get" id="SlcK|ax@NP~q@1Z)CX^8">
+                        <field name="varname" id="4hi@8!NHwF5e8lD;UW[%" variabletype="GenericValue">user_name</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="action_gesture_param" id=":#uE-F32jA:wc[T/NeT;">
+                <field name="gesture">BigSmile</field>
+                <value name="strength">
+                  <shadow type="text" id="=R?EQfX+Lps(hb{dmLVf">
+                    <field name="value">1.0</field>
+                  </shadow>
+                </value>
+                <value name="duration">
+                  <shadow type="text" id="!cRGF(fwZn|^anlnF6;L">
+                    <field name="value">1.0</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_any" id="WZiumascy%9sR`jMcC7=">
+            <statement name="actions">
+              <block type="say_utterance" id="j/@e7`{z*W{Sz%1*2eAv">
+                <statement name="utterance">
+                  <block type="utt_text" id="%itJ71/5n`[R~W}2bPsr">
+                    <field name="text">I didn't quite catch your name</field>
+                    <next>
+                      <block type="utt_text" id="z~:rFH|9.*=}7(v]X(tm">
+                        <field name="text">So I will just call you hummingbird!</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="define_intent" id="Ie1[ytqN]+1P+dqlQKm4" x="643" y="36">
+    <field name="intent_name" id="a.!s2-h7Dob0vJ*z@!wM" variabletype="IntentCandidate">user_feeling</field>
+    <value name="intent">
+      <block type="intent_simple" id="mFqrQlv.:4m_4FGbRGp%">
+        <statement name="exampleBlocks">
+          <block type="intent_example" id="/CC`)pxLGE`#b4Hg/t40">
+            <field name="text">great</field>
+            <next>
+              <block type="intent_example" id="JIu)Sf%0vLg4)/mJ/_,^">
+                <field name="text">Perfect</field>
+                <next>
+                  <block type="intent_example" id="06p,;V)6F=7Z8Sm2l^nU">
+                    <field name="text">Good</field>
+                    <next>
+                      <block type="intent_example" id="K{j*7l$JBTuW$on6l*JD">
+                        <field name="text">Fantastic</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </value>
+  </block>
+  <block type="state" id="D!A~gRB/^!#nBHMOr4Gh" x="-190" y="357">
+    <field name="stateName">How are you?</field>
+    <statement name="actions">
+      <block type="ask_utterance" id="}#*R^{Sqp=r!a^6:/`??">
+        <statement name="utterance">
+          <block type="utt_text" id="6Dr,SSUwu;rfFU@b-:rR">
+            <field name="text">How are you?</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <next>
+      <block type="onresponse_intent" id="5)$CD65Y;.uQ/2~gtXsm">
+        <value name="intent">
+          <block type="intent_variable" id="_$0$2o$t-FXeU1+vWDhj">
+            <field name="varname" id="a.!s2-h7Dob0vJ*z@!wM" variabletype="IntentCandidate">user_feeling</field>
+          </block>
+        </value>
+        <statement name="actions">
+          <block type="say_utterance" id="Iy(/-xq(~fcVuKwc7cg:">
+            <statement name="utterance">
+              <block type="utt_text" id="}e!bl[pTnIt!5Hg.W@(J">
+                <field name="text">I am not too bad myself</field>
+              </block>
+            </statement>
+            <next>
+              <block type="action_gesture" id="]~_fQ7mhRm,t:cyhUVRd">
+                <field name="gesture">BigSmile</field>
+                <next>
+                  <block type="goto" id="AS}=$OdeOhV/e/#P0aT}">
+                    <field name="stateName">What is your name?</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="onresponse_any" id="UmlNQ9a~H5t`qy2Br57`">
+            <statement name="actions">
+              <block type="say_utterance" id="^P;S{D+nG.1_o*i30zdn">
+                <statement name="utterance">
+                  <block type="utt_text" id=";@S),Z{QikA87;?yw)Q[">
+                    <field name="text">I think today will be a great day!</field>
+                  </block>
+                </statement>
+                <next>
+                  <block type="goto" id=":CU1vMU@`mz)iIX9U+!Z">
+                    <field name="stateName">What is your name?</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
